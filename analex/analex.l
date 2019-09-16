@@ -19,6 +19,7 @@
 [";" | "," | "{" | "}" | "&&" | "||" | "'"] {
     printf("Token gerado: %s \n", yytext);
 }
+
 ([0-1]+)([a-zA-Z])* {
     printf("A cadeia %s não faz parte da linguagem \n", yytext);
 }
