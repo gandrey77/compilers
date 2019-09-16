@@ -1,24 +1,30 @@
 %%
 
 ([a-zA-Z])([a-zA-Z]|[0-9\_])* {                     
-    printf("Token gerado: %s -nome de variavel\n", yytext);
+    printf("Token gerado: %s \n", yytext);
 }
                                                                     
 [0-9]+ {                                             
-    printf("Token gerado: %s -numero\n", yytext);
+    printf("Token gerado: %s \n", yytext);
 }
 
-("#"[a-z]*"\n")|(" "|"\n"|"\t")+ ;
 
-["+"|"-"|"/"|"*"|"("|")"|"."|"="|">"|"<"] {
-    printf("Token gerado: %s -expressao aritmetica\n", yytext);
+(" "|"\n"|"\t")+ ;
+
+
+["+" | "-" | "/" | "*" | "(" | ")" | "." | "=" | ">" | "<" | "<=" | ">="] {
+    printf("Token gerado: %s \n", yytext);
 }
+
 [";" | "," | "{" | "}" | "&&" | "||" | "'"] {
-    printf("Token gerado: %s -caracter especial\n", yytext);
+    printf("Token gerado: %s \n", yytext);
+}
+([0-1]+)([a-zA-Z])* {
+    printf("A cadeia %s não faz parte da linguagem \n", yytext);
 }
 
 . {
-    printf("A cadeia %s nao faz parte da linguagem\n",yytext);
+    printf("A cadeia %s nao faz parte da linguagem \n",yytext);
 }
 %%
 
