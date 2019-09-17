@@ -18,7 +18,7 @@
     printf("Token gerado: %s\n", yytext);
 }
 
-["+" | "-" | "/" | "*" | "(" | ")" | "."] {
+["+" | "-" | "/" | "*" | "(" | ")" | "." | "%"] {
     printf("Token gerado: %s\n", yytext);
 }
 
