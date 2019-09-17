@@ -38,5 +38,6 @@ erro_geral .
 
 int main(){
     yylex();
-    return (0);
+
+    return 0;
 }

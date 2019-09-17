@@ -1,0 +1,8 @@
+void init() {
+    int a, b, sum;
+
+    sum = a + b;
+    print(`a + b = {sum}`);
+    
+    return;
+}
