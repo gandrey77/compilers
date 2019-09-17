@@ -1,6 +1,0 @@
-    int main(){
-        int aux, 1aux;
-        printf("meu penis e grandao");
-        return (0)
-    }
-    

@@ -1,0 +1,7 @@
+void init() {
+  char 1aux, paçoca;
+
+  ~teste
+
+  return;
+}
