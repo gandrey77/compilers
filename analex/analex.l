@@ -1,6 +1,6 @@
 %{
 
-#include<stdio.h>    
+#include <stdio.h>    
 
 %}
 
@@ -28,21 +28,21 @@ erro_geral .
 
 %%
 
-{var}           { printf("Token: %s\n", yytext); }
-{string}        { printf("Token: %s\n", yytext) }
-{numero}        { printf("Token: %s\n",yytext); }
+{var}                   { printf("Token: %s\n", yytext); }
+{string}                { printf("Token: %s\n", yytext) }
+{numero}                { printf("Token: %s\n",yytext); }
 {tabulacao} ; 
-{aritmetica}    { printf("Token: %s\n",yytext); }
-{comparacao}    { printf("Token: %s\n",yytext); }
+{aritmetica}            { printf("Token: %s\n",yytext); }
+{comparacao}            { printf("Token: %s\n",yytext); }
 {caracter_especial}     { printf("Token: %s\n",yytext); }
-{logica}        { printf("Token: %s\n",yytext); }
-{comentario}    { printf("Token: %s\n",yytext); }
-{erro_var}      { printf("A cadeia %s nao faz parte da linguagem\n",yytext); }
-{erro_geral}    { printf("A cadeia %s nao faz parte da linguagem\n",yytext); }
+{logica}                { printf("Token: %s\n",yytext); }
+{comentario}            { printf("Token: %s\n",yytext); }
+{erro_var}              { printf("A cadeia %s nao faz parte da linguagem\n",yytext); }
+{erro_geral}            { printf("A cadeia %s nao faz parte da linguagem\n",yytext); }
 
 %%
 
-int main(){
+int main() {
     yylex();
 
     return 0;
