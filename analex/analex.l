@@ -16,9 +16,9 @@ comparacao >=|<=|==|!=
 
 aritmetica [+|-|/|%|*|(|)|=|<|>]
 
-gramatica ['|{|}|;|,]
+caracter_especial ['|{|}|;|,]
 
-logica ["AND"|"OR"]
+logica ["AND"|"OR"|and|or]
 
 comentario "#".*"#"
 
@@ -34,7 +34,7 @@ erro_geral .
 {tabulacao} ; 
 {aritmetica}    { printf("Token: %s\n",yytext); }
 {comparacao}    { printf("Token: %s\n",yytext); }
-{gramatica}     { printf("Token: %s\n",yytext); }
+{caracter_especial}     { printf("Token: %s\n",yytext); }
 {logica}        { printf("Token: %s\n",yytext); }
 {comentario}    { printf("Token: %s\n",yytext); }
 {erro_var}      { printf("A cadeia %s nao faz parte da linguagem\n",yytext); }
