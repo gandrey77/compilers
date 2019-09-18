@@ -26,16 +26,16 @@ erro_geral .
 
 %%
 
-{string}        {printf("Token: %s \n", yytext);}
-{numero}        {printf("Token: %s\n",yytext);}
+{string}        { printf("Token: %s \n", yytext); }
+{numero}        {  printf("Token: %s\n",yytext); }
 {tabulacao} ; 
-{aritmetica}    {printf("Token: %s\n",yytext);}
-{aritmetica1}   {printf("Token: %s\n",yytext);}
-{gramatica}     {printf("Token: %s\n",yytext);}
-{logica}        {printf("Token: %s\n",yytext);}
-{comentario}    {printf("Token: %s\n",yytext);}
-{erro_var}      {printf("A cadeia %s nao faz parte da linguagem\n",yytext);}
-{erro_geral}    {printf("A cadeia %s nao faz parte da linguagem\n",yytext);}
+{aritmetica}    { printf("Token: %s\n",yytext); }
+{aritmetica1}   { printf("Token: %s\n",yytext); }
+{gramatica}     { printf("Token: %s\n",yytext); }
+{logica}        { printf("Token: %s\n",yytext); }
+{comentario}    { printf("Token: %s\n",yytext); }
+{erro_var}      { printf("A cadeia %s nao faz parte da linguagem\n",yytext); }
+{erro_geral}    { printf("A cadeia %s nao faz parte da linguagem\n",yytext); }
 
 %%
 
