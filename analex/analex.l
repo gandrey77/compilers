@@ -4,13 +4,15 @@
 
 %}
 
-string ([a-zA-Z])([a-zA-Z]|[0-9\_])* 
+var ([a-zA-Z])([a-zA-Z]|[0-9\_])*
+
+string "'".*"'"
                                                                     
 numero [0-9]+([\.][0-9]+)?
 
 tabulacao (" "|"\n"|"\t")+ 
 
-aritmetica1 >=|<=|==|!=
+comparacao >=|<=|==|!=
 
 aritmetica [+|-|/|%|*|(|)|=|<|>]
 
@@ -26,11 +28,12 @@ erro_geral .
 
 %%
 
-{string}        { printf("Token: %s \n", yytext); }
-{numero}        {  printf("Token: %s\n",yytext); }
+{var}           { printf("Token: %s\n", yytext); }
+{string}        { printf("Token: %s\n", yytext) }
+{numero}        { printf("Token: %s\n",yytext); }
 {tabulacao} ; 
 {aritmetica}    { printf("Token: %s\n",yytext); }
-{aritmetica1}   { printf("Token: %s\n",yytext); }
+{comparacao}    { printf("Token: %s\n",yytext); }
 {gramatica}     { printf("Token: %s\n",yytext); }
 {logica}        { printf("Token: %s\n",yytext); }
 {comentario}    { printf("Token: %s\n",yytext); }
