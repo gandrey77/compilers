@@ -22,14 +22,14 @@ logica ["AND"|"OR"|and|or]
 
 comentario "#".*"#"
 
-erro_var  ([0-1]+)([a-zA-Z])* 
+erro_var  (~|"?"|@|([0-1]+))([a-zA-Z])*
 
 erro_geral . 
 
 %%
 
 {var}                   { printf("Token: %s\n", yytext); }
-{string}                { printf("Token: %s\n", yytext) }
+{string}                { printf("Token: %s\n", yytext); }
 {numero}                { printf("Token: %s\n",yytext); }
 {tabulacao} ; 
 {aritmetica}            { printf("Token: %s\n",yytext); }

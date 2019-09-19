@@ -1,7 +1,6 @@
 void init() {
-  char 1aux, paçoca;
-
-  ~teste
+  char 1aux, @pacoca, ?lindo;
+   int  ~teste
 
   return;
 }
