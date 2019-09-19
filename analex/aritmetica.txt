@@ -1,7 +1,8 @@
-10 = 20
-#eu queria ter um penis gigantesco#
-1.325
+void init() {
+    int a, b, sum;
 
-a AND b 
-
-A OR B 
+    sum = a + b;
+    print(`a + b = {sum}`);
+    
+    return;
+}
