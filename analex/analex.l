@@ -1,7 +1,7 @@
 %{
-
-#include <stdio.h>    
-
+#include <stdio.h>
+#include <string.h>
+#include "../anasint/y.tab.h"
 %}
 
 var ([a-zA-Z])([a-zA-Z]|[0-9\_])*
