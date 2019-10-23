@@ -2,6 +2,8 @@
 #include <stdio.h>
 #include <string.h>
 #include "../anasint/y.tab.h"
+
+void yyerror(char *error);
 %}
 
 var ([a-zA-Z])([a-zA-Z]|[0-9\_])*
@@ -12,9 +14,9 @@ numero [0-9]+([\.][0-9]+)?
 
 tabulacao (" "|"\n"|"\t")+ 
 
-comparacao >=|<=|==|!=
+comparacao >=|<=|==|!=|<|>
 
-aritmetica [+|-|/|%|*|(|)|=|<|>]
+aritmetica [+|-|/|*|(|)|=]
 
 caracter_especial ['|{|}|;|,]
 
@@ -28,11 +30,27 @@ erro_geral .
 
 %%
 
-{var}                   { printf("Token: %s\n", yytext); }
-{string}                { printf("Token: %s\n", yytext); }
-{numero}                { printf("Token: %s\n",yytext); }
+{var} { 
+    yylval.strval = strdup(yytext);
+    return ID;
+}
+
+{string} { 
+    yylval.strval = strdup(yytext);
+    return STRING;
+}
+
+{numero} { 
+    yylval.intval = atoi(yytext);
+    return INT;
+}
+
+{aritmetica} { 
+    yylval.strval = strdup(yytext);
+    return OPERANDO;
+}
+
 {tabulacao} ; 
-{aritmetica}            { printf("Token: %s\n",yytext); }
 {comparacao}            { printf("Token: %s\n",yytext); }
 {caracter_especial}     { printf("Token: %s\n",yytext); }
 {logica}                { printf("Token: %s\n",yytext); }
@@ -42,8 +60,6 @@ erro_geral .
 
 %%
 
-int main() {
-    yylex();
-
-    return 0;
+int yywrap() {
+    return 1;
 }
