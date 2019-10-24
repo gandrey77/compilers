@@ -46,10 +46,24 @@ extern int yydebug;
    /* Put the tokens into the symbol table, so that GDB and other debuggers
       know about them.  */
    enum yytokentype {
-     ID = 258,
-     STRING = 259,
-     OPERATOR = 260,
-     NUMBER = 261
+     INIT = 258,
+     END = 259,
+     TYPE = 260,
+     COMMA = 261,
+     SEMICOLON = 262,
+     OPN_PARENTH = 263,
+     CLS_PARENTH = 264,
+     OPN_BRACKET = 265,
+     CLS_BRACKET = 266,
+     ID = 267,
+     OPERATOR = 268,
+     NUMBER = 269,
+     EQUAL = 270,
+     IF = 271,
+     ELSE = 272,
+     COMPARATOR = 273,
+     TEXT = 274,
+     COMMENT = 275
    };
 #endif
 
