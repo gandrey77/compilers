@@ -1,8 +1,16 @@
-void init() {
-    int a, b, sum;
-
-    sum = a + b;
-    print(sum);
+ init 
+    integer ab
     
-    return;
-}
+    if(a>=b){
+        a = b
+    }
+    if(a<b){
+        b = a
+    }
+    else{ 
+       a = a + b
+   }
+   while(a>b){
+       a / b
+   }
+end

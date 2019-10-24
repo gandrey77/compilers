@@ -1,6 +1,3 @@
-void init() {
-  char 1aux, @pacoca, ?lindo;
-   int  ~teste
-
-  return;
-}
+init
+  
+end 

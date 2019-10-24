@@ -49,32 +49,53 @@ extern int yydebug;
 # define YYTOKENTYPE
   enum yytokentype
   {
-    STRING = 258,
-    ID = 259,
-    OPERANDO = 260,
-    INT = 261
+    INIT = 258,
+    END = 259,
+    TYPE = 260,
+    COMMA = 261,
+    SEMICOLON = 262,
+    OPN_PARENTH = 263,
+    CLS_PARENTH = 264,
+    OPN_BRACKET = 265,
+    CLS_BRACKET = 266,
+    ID = 267,
+    OPERATOR = 268,
+    NUMBER = 269,
+    EQUAL = 270,
+    IF = 271,
+    ELSE = 272,
+    WHILE = 273,
+    PRINT = 274,
+    COMPARATOR = 275,
+    TEXT = 276,
+    COMMENT = 277
   };
 #endif
 /* Tokens.  */
-#define STRING 258
-#define ID 259
-#define OPERANDO 260
-#define INT 261
+#define INIT 258
+#define END 259
+#define TYPE 260
+#define COMMA 261
+#define SEMICOLON 262
+#define OPN_PARENTH 263
+#define CLS_PARENTH 264
+#define OPN_BRACKET 265
+#define CLS_BRACKET 266
+#define ID 267
+#define OPERATOR 268
+#define NUMBER 269
+#define EQUAL 270
+#define IF 271
+#define ELSE 272
+#define WHILE 273
+#define PRINT 274
+#define COMPARATOR 275
+#define TEXT 276
+#define COMMENT 277
 
 /* Value type.  */
 #if ! defined YYSTYPE && ! defined YYSTYPE_IS_DECLARED
-
-union YYSTYPE
-{
-#line 9 "parser.y" /* yacc.c:1921  */
-
-  char* strval;
-  int intval;
-
-#line 75 "y.tab.h" /* yacc.c:1921  */
-};
-
-typedef union YYSTYPE YYSTYPE;
+typedef int YYSTYPE;
 # define YYSTYPE_IS_TRIVIAL 1
 # define YYSTYPE_IS_DECLARED 1
 #endif

@@ -32,11 +32,15 @@ if_decl if
 
 else_decl else
 
+loop while
+
+print print
+
 general ([a-zA-Z])([a-zA-Z]|[0-9\_])*
 
 text "'".*"'"
                                                                     
-number [0-9]+([\.][0-9]+)?
+number [0-9]+([\.][0-9]+)*
 
 arithmetic [+|-|/|*|(|)]
 
@@ -76,6 +80,10 @@ error .
 
 {else_decl} { return ELSE; }
 
+{loop} { return WHILE; }
+
+{print} { return PRINT; }
+
 {general} { return ID; }
 
 {text} { return TEXT; }
@@ -90,7 +98,7 @@ error .
 
 {comentario} { return COMMENT; }
 
-{tabulation} ; // Apenas ignora as tabulações.
+{tabulation}     ; // Apenas ignora as tabulações.
 
 {error_general} { printf("A cadeia %s nao faz parte da linguagem\n",yytext); }
 
