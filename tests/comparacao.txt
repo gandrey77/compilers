@@ -5,8 +5,8 @@ init
     temp2 = world!
 
     if (temp1 != temp2) {
-      print('Strings iguais')
+        print('Strings iguais')
     } else {
-      print('Strings diferentes')
+        print('Strings diferentes')
     }
 end

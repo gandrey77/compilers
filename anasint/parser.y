@@ -1,14 +1,14 @@
 %{
 #include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
 
 /* Protótipos de funções. */
-void yyerror(char *error);
+void yyerror(const char *error);
 int yylex(void);
 %}
 
 %defines "parser.tab.h"
-
 
 /* Símbolo inicial. */
 %start start
@@ -53,7 +53,8 @@ command:
   | comparison 
   | text 
   | comment
-  | print;  
+  | print
+  |;  
 
 declaration:
   TYPE ID continuation command { printf("Declaracao de variaveis aceita\n"); }
@@ -85,7 +86,7 @@ loop:
   | WHILE comparison block command { printf("Laço (while) aceito\n"); };
 
 loop_for: 
-  OPN_PARENTH allocation SEMICOLON allocation CLS_PARENTH;
+  OPN_PARENTH allocation SEMICOLON allocation CLS_PARENTH
   | OPN_PARENTH allocation SEMICOLON expression COMPARATOR expression CLS_PARENTH;
   
 comparison:
@@ -101,13 +102,15 @@ block:
   OPN_BRACKET command CLS_BRACKET  { printf("Bloco aceito\n"); };
 
 
-print: PRINT OPN_PARENTH TEXT CLS_PARENTH command { printf("Print aceito\n"); };
+print: 
+  PRINT OPN_PARENTH TEXT CLS_PARENTH command { printf("Print aceito\n"); };
 
   
 %%
 
-void yyerror(char *error) {
-  printf("Error: %s\n", error);
+void yyerror(const char *error) {
+  printf("Erro: %s\n", error);
+  exit(1);
 }
 
 int main() {
