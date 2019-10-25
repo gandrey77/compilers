@@ -34,6 +34,8 @@ else_decl else
 
 loop while
 
+for for
+
 print print
 
 general ([a-zA-Z])([a-zA-Z]|[0-9\_])*
@@ -80,11 +82,12 @@ error .
 
 {else_decl} { return ELSE; }
 
+{for} {return FOR; }
+
 {loop} { return WHILE; }
 
 {print} { return PRINT; }
 
-{general} { return ID; }
 
 {text} { return TEXT; }
 
@@ -99,6 +102,8 @@ error .
 {comentario} { return COMMENT; }
 
 {tabulation}     ; // Apenas ignora as tabulações.
+
+{general} { return ID; }
 
 {error_general} { printf("A cadeia %s nao faz parte da linguagem\n",yytext); }
 
