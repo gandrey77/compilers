@@ -11,14 +11,14 @@ clear >$(tty)
 
 if [ $1 == 1 ];
 then
-    ./compiler < ../tests/aritmetica.txt;     
+    ./compiler < ../tests/programa.txt;     
 
 elif [ $1 == 2 ];
 then
-   ./compiler < ../tests/comparacao.txt;
+   ./compiler < ../tests/erro_lex.txt;
 
 elif [ $1 == 3 ];
 then
-   ./compiler < ../tests/erro.txt;
+   ./compiler < ../tests/erro_sint.txt;
 
 fi
