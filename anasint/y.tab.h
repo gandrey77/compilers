@@ -68,7 +68,8 @@ extern int yydebug;
     PRINT = 274,
     COMPARATOR = 275,
     TEXT = 276,
-    COMMENT = 277
+    COMMENT = 277,
+    FOR = 278
   };
 #endif
 /* Tokens.  */
@@ -92,6 +93,7 @@ extern int yydebug;
 #define COMPARATOR 275
 #define TEXT 276
 #define COMMENT 277
+#define FOR 278
 
 /* Value type.  */
 #if ! defined YYSTYPE && ! defined YYSTYPE_IS_DECLARED

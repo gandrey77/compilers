@@ -35,6 +35,7 @@ int yylex(void);
 %token COMPARATOR
 %token TEXT
 %token COMMENT
+%token FOR
 
 /* Evita a ambiguidade da gramática de aritmética. */
 %left OPERATOR
@@ -53,7 +54,7 @@ command:
   | comparison 
   | text 
   | comment
-  | print
+  | print;
   
 
 declaration:
@@ -65,9 +66,10 @@ continuation:
   | ;
 
 expression:
-  expression OPERATOR expression { printf("Expressao aritmetica aceita\n"); }
+  expression OPERATOR expression  { printf("Expressao aritmetica aceita\n"); }
   | NUMBER {printf("Numero aceito\n");}
   | ID {printf("ID aceito\n");};
+  
 
 allocation:
   ID EQUAL expression command{ printf("Atribuicao aceita\n"); };
@@ -82,8 +84,13 @@ else_conditional:
   
 
 loop:
-  WHILE comparison block command {printf("Loop funcionando\n");};  
+  FOR for block { printf("For funcionando\n");} 
+  | WHILE comparison block command {printf("while funcionando\n");};
 
+for: 
+  OPN_PARENTH allocation SEMICOLON allocation CLS_PARENTH;
+  | OPN_PARENTH allocation SEMICOLON expression COMPARATOR expression CLS_PARENTH;
+  
 comparison:
   OPN_PARENTH expression COMPARATOR expression CLS_PARENTH { printf("Comparacao aceita\n"); };
 
@@ -94,7 +101,7 @@ comment:
   COMMENT { printf("Comentario aceito\n"); };
  
 block: 
-  OPN_BRACKET command CLS_BRACKET {printf("Bloco criado\n");};
+  OPN_BRACKET command CLS_BRACKET  {printf("Bloco criado\n");};
 
 
 print: PRINT OPN_PARENTH TEXT CLS_PARENTH command {printf("Print sucesso\n");};
