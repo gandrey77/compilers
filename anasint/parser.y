@@ -8,7 +8,7 @@ void yyerror(const char *error);
 int yylex(void);
 %}
 
-%defines "parser.tab.h"
+//%defines "parser.tab.h"
 
 /* Símbolo inicial. */
 %start start

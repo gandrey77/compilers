@@ -7,6 +7,8 @@ cd analex/
 lex scanner.l
 gcc -o compiler lex.yy.c ../anasint/y.tab.c -ll
 
+clear >$(tty)
+
 if [ $1 == 1 ];
 then
     ./compiler < ../tests/aritmetica.txt;     
@@ -14,4 +16,9 @@ then
 elif [ $1 == 2 ];
 then
    ./compiler < ../tests/comparacao.txt;
+
+elif [ $1 == 3 ];
+then
+   ./compiler < ../tests/erro.txt;
+
 fi

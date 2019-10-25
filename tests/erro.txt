@@ -1,0 +1,8 @@
+init 
+
+    integer a, b
+    if {
+        print('erro')
+    }
+
+end    
