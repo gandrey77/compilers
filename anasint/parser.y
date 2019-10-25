@@ -1,14 +1,13 @@
 %{
 #include <stdio.h>
 #include <string.h>
-#ifdef  WIN32
-  %defines "parser.tab.h"
-#endif
 
 /* Protótipos de funções. */
 void yyerror(char *error);
 int yylex(void);
 %}
+
+%defines "parser.tab.h"
 
 
 /* Símbolo inicial. */
@@ -46,7 +45,7 @@ start:
   INIT command END;
 
 command:
-  | declaration 
+  declaration 
   | expression 
   | allocation
   | loop
@@ -54,12 +53,11 @@ command:
   | comparison 
   | text 
   | comment
-  | print;
-  
+  | print;  
 
 declaration:
   TYPE ID continuation command { printf("Declaracao de variaveis aceita\n"); }
-  | TYPE ID EQUAL expression continuation command { printf("Declaracao diferenciada\n");};
+  | TYPE ID EQUAL expression continuation command { printf("Declaracao de variaveis aceita\n"); };
 
 continuation:
   COMMA ID continuation
@@ -67,27 +65,26 @@ continuation:
 
 expression:
   expression OPERATOR expression  { printf("Expressao aritmetica aceita\n"); }
-  | NUMBER {printf("Numero aceito\n");}
-  | ID {printf("ID aceito\n");};
-  
+  | OPN_PARENTH expression CLS_PARENTH { printf("Expressao aritmetica aceita\n"); }
+  | NUMBER { printf("Numero aceito\n"); }
+  | ID { printf("Variavel aceita\n"); };
 
 allocation:
-  ID EQUAL expression command{ printf("Atribuicao aceita\n"); };
+  ID EQUAL expression command { printf("Atribuicao aceita\n"); };
 
 conditional:
-  IF comparison block command { printf("if aceito\n"); }
+  IF comparison block command { printf("Condicional (if) aceita\n"); }
   | else_conditional;
 
 else_conditional:
-  ELSE comparison block command { printf("Else aceito\n");}
-  | ELSE block command { printf("Else sem parametro\n");};
-  
+  ELSE comparison block command { printf("Condicional (else parametrizado) aceita\n"); }
+  | ELSE block command { printf("Condicional (else sem parametro) aceita\n"); };  
 
 loop:
-  FOR for block { printf("For funcionando\n");} 
-  | WHILE comparison block command {printf("while funcionando\n");};
+  FOR loop_for block { printf("Laço (for) aceito\n"); } 
+  | WHILE comparison block command { printf("Laço (while) aceito\n"); };
 
-for: 
+loop_for: 
   OPN_PARENTH allocation SEMICOLON allocation CLS_PARENTH;
   | OPN_PARENTH allocation SEMICOLON expression COMPARATOR expression CLS_PARENTH;
   
@@ -101,10 +98,10 @@ comment:
   COMMENT { printf("Comentario aceito\n"); };
  
 block: 
-  OPN_BRACKET command CLS_BRACKET  {printf("Bloco criado\n");};
+  OPN_BRACKET command CLS_BRACKET  { printf("Bloco aceito\n"); };
 
 
-print: PRINT OPN_PARENTH TEXT CLS_PARENTH command {printf("Print sucesso\n");};
+print: PRINT OPN_PARENTH TEXT CLS_PARENTH command { printf("Print aceito\n"); };
 
   
 %%

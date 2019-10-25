@@ -1,13 +1,12 @@
 init 
-   string temp1, temp2
+    string temp1, temp2
 
-  temp1 = Hello
-  temp2 = world!
+    temp1 = Hello
+    temp2 = world!
 
-  if (temp1 != temp2) {
-    print('Strings iguais')
-  } else {
-    print('Strings diferentes')
-  }
-
+    if (temp1 != temp2) {
+      print('Strings iguais')
+    } else {
+      print('Strings diferentes')
+    }
 end

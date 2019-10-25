@@ -1,11 +1,12 @@
- init 
-    if(a<b){
-        a = a+b
-        while(i<10){
-        a = b
+init 
+    if (a < b) {
+        a = a + b
+        while (i < 10) {
+            a = b
         }
-        for(i=0;i<5){
-            a = a+b
+
+        for (i = 0; i < 5) {
+            a = a + b
         }
     }    
 end

@@ -14,8 +14,4 @@ then
 elif [ $1 == 2 ];
 then
    ./compiler < ../tests/comparacao.txt;
-
-elif [ $1 == 3 ]; 
-then 
-    ./compiler < ../tests/erros.txt;
 fi

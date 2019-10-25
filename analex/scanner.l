@@ -7,6 +7,8 @@
 #else
     #include "../anasint/y.tab.h"
 #endif
+
+void handleError(char *token);
 %}
 
 /* Expressões regulares para as cadeias lidas. */
@@ -44,7 +46,7 @@ text "'".*"'"
                                                                     
 number [0-9]+([\.][0-9]+)*
 
-arithmetic [+|-|/|*|(|)]
+arithmetic [+|-|/|*]
 
 allocation <-|=
 
@@ -52,7 +54,7 @@ comparison >=|<=|==|!=|<|>
 
 tabulation [" "|\n|\t]+ 
 
-comentario "#".*"#"
+comment "#".*"#"
 
 error_general (~|"?"|@|([0-1]+))([a-zA-Z])*
 
@@ -88,7 +90,6 @@ error .
 
 {print} { return PRINT; }
 
-
 {text} { return TEXT; }
 
 {number} { return NUMBER; }
@@ -99,17 +100,23 @@ error .
 
 {comparison} { return COMPARATOR; }
 
-{comentario} { return COMMENT; }
+{comment} { return COMMENT; }
 
-{tabulation}     ; // Apenas ignora as tabulações.
+{tabulation} ;  // Apenas ignora as tabulações.
 
 {general} { return ID; }
 
-{error_general} { printf("A cadeia %s nao faz parte da linguagem\n",yytext); }
+{error_general} { handleError(yytext); }
 
-{error} { printf("A cadeia %s nao faz parte da linguagem\n",yytext); }
+{error} { handleError(yytext); }
 
 %%
+
+void handleError(char *token) {
+    printf("Erro lexico: a cadeia %s nao faz parte da linguagem\n", token);
+
+    exit(1);
+}
 
 int yywrap() {
     return 1;
